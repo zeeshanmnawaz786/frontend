@@ -1,55 +1,103 @@
 import bnb_img from "../assets/bnbbag.webp";
-import load_img from "../assets/load.png";
-import vou_img from "../assets/voucher.png";
-import win_img from "../assets/win.png";
+import left from "../assets/left.png";
+import right from "../assets/right.png";
+import { topCardData } from "../dummydata/topCard";
+
+import { useState, useEffect, useRef } from "react";
 
 const TopCards = () => {
+  const parentRef = useRef(null);
+  const scrollRef = useRef(null);
+  const [hideButtons, setHideButtons] = useState(false);
+
+  const handleScroll = (direction) => {
+    const { current } = scrollRef;
+
+    const scrollAmount = window.innerWidth > 1800 ? 270 : 210;
+
+    if (direction === "left") {
+      current.scrollLeft -= scrollAmount;
+    } else {
+      current.scrollLeft += scrollAmount;
+    }
+  };
+
+  const isScrollable = () => {
+    const { current } = scrollRef;
+    const { current: parent } = parentRef;
+
+    if (current?.scrollWidth >= parent?.offsetWidth)
+      return setHideButtons(false);
+    return setHideButtons(true);
+  };
+
+  useEffect(() => {
+    isScrollable();
+    window.addEventListener("resize", isScrollable);
+
+    return () => {
+      window.removeEventListener("resize", isScrollable);
+    };
+  });
+
   return (
-    <div>
-      <div className="relative flex-1 flex overflow-x-scroll no-scrollbar select-none">
-        <div className="flex flex-row gap-10 text-center pb-8 text-white w-max">
-          <div
-            className="p-4 rounded-lg w-[280px] lg:w-[283px]  mb-4 relative border-t-4 border-l-2 border-r-2 border-[#d753d2] shadow-xl flex-shrink-0 w-[calc(25% - 2rem)]"
-            style={{ backgroundColor: "rgba(59,51,100,255)" }}
-          >
-            <img src={bnb_img} alt="Small img" className="w-16 h-16 mx-auto" />
-            <h2 className="text-xl font-semibold mb-1 mt-4">40.00000300 BNB</h2>
-            <p className="mb-4 font-light text-xs">ROUND POT SIZE</p>
-          </div>
+    <>
+      <div className="relative flex-1 max-w-full flex mt-3" ref={parentRef}>
+        <div
+          className="flex flex-row w-max overflow-x-scroll no-scrollbar  gap-10  text-center pb-8 text-white select-none"
+          ref={scrollRef}
+        >
+          {topCardData.map((item) => {
+            return (
+              <div
+                className="p-4 rounded-lg w-[280px] lg:w-[283px]  mb-4 relative border-t-4 border-l-2 border-r-2 border-[#d753d2] shadow-xl flex-shrink-0 w-[calc(25% - 2rem)]"
+                style={{ backgroundColor: "rgba(59,51,100,255)" }}
+              >
+                <img
+                  src={bnb_img}
+                  alt="Small img"
+                  className="w-16 h-16 mx-auto"
+                />
+                <h2 className="text-xl font-semibold mb-1 mt-4">
+                  {item.balance} BNB
+                </h2>
+                <h5 className="mb-4 font-light text-xs">{item.owner}</h5>
+                <h5 className="mb-4 font-light text-xs">
+                  {item.totalParticipants}
+                </h5>
+              </div>
+            );
+          })}
 
-          <div
-            className="bg-white p-4 rounded-lg w-[280px] lg:w-[283px] mb-4 relative border-t-4 border-l-2 border-r-2 border-[#d753d2] shadow-xl flex-shrink-0 w-[calc(25% - 2rem)]"
-            style={{ backgroundColor: "rgba(59,51,100,255)" }}
-          >
-            <img src={load_img} alt="Small img" className="w-16 h-16 mx-auto" />
-            <h2 className="text-xl font-semibold mb-1 mt-4">Loading...</h2>
-            <p className="mb-4 font-light text-xs">TIME LEFT</p>
-          </div>
-
-          <div
-            className="bg-white p-4 rounded-lg w-[280px] lg:w-[283px] mb-4 relative border-t-4 border-l-2 border-r-2 border-[#d753d2] shadow-xl flex-shrink-0 w-[calc(25% - 2rem)]"
-            style={{ backgroundColor: "rgba(59,51,100,255)" }}
-          >
-            <img src={vou_img} alt="Small img" className="w-16 h-16 mx-auto" />
-            <h2 className="text-xl font-semibold mb-1 mt-4 line-through">
-              0.00795 BNB
-            </h2>
-            <p className="font-light text-xs">TICKET PRICE</p>
-            <p className="text-sm">0.00795 BNB (-0.0%)</p>
-            <p className="font-light text-xs">YOUR HOLDER DISCOUNTED PRICE</p>
-          </div>
-
-          <div
-            className="bg-white p-4 rounded-lg w-[280px] lg:w-[283px] mb-4 relative border-t-4 border-l-2 border-r-2 border-[#d753d2] shadow-xl flex-shrink-0 w-[calc(25% - 2rem)]"
-            style={{ backgroundColor: "rgba(59,51,100,255)" }}
-          >
-            <img src={win_img} alt="Small img" className="w-16 h-16 mx-auto" />
-            <h2 className="text-xl font-semibold mb-1 mt-4">1</h2>
-            <p className="mb-4 font-light text-xs">ROUND NUMBER</p>
-          </div>
+          {!hideButtons && (
+            <>
+              <div
+                className="absolute w-8 h-8 minlg:w-12 minlg:h-12 -left-6 top-24 cursor-pointer hidden lg:flex"
+                onClick={() => handleScroll("left")}
+              >
+                <img
+                  src={left}
+                  layout="fill"
+                  objectFit="contain"
+                  alt="left_arrow"
+                />
+              </div>
+              <div
+                className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-24 right-6 cursor-pointer hidden lg:flex"
+                onClick={() => handleScroll("right")}
+              >
+                <img
+                  src={right}
+                  layout="fill"
+                  objectFit="contain"
+                  alt="right_arrow"
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
