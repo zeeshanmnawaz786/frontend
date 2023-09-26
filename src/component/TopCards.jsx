@@ -42,15 +42,15 @@ const TopCards = () => {
 
   return (
     <>
-      <div className="relative flex-1 max-w-full flex mt-3" ref={parentRef}>
+      <div className="relative flex-1 max-w-full flex" ref={parentRef}>
         <div
-          className="flex flex-row w-max overflow-x-scroll no-scrollbar  gap-10  text-center pb-8 text-white select-none"
+          className="flex flex-row w-max overflow-x-scroll no-scrollbar gap-6 p-2 text-center pb-8 text-white select-none"
           ref={scrollRef}
         >
           {topCardData.map((item) => {
             return (
               <div
-                className="p-4 rounded-lg w-[280px] lg:w-[283px]  mb-4 relative border-t-4 border-l-2 border-r-2 border-[#d753d2] shadow-xl flex-shrink-0 w-[calc(25% - 2rem)]"
+                className="p-2 rounded-lg w-[230px] lg:w-[253px] shadow-custom  mb-4 relative flex-shrink-0 w-[calc(25% - 2rem)]"
                 style={{ backgroundColor: "rgba(59,51,100,255)" }}
               >
                 <img
@@ -83,7 +83,7 @@ const TopCards = () => {
                 />
               </div>
               <div
-                className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-24 right-6 cursor-pointer hidden lg:flex"
+                className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-24 -right-6 cursor-pointer hidden lg:flex"
                 onClick={() => handleScroll("right")}
               >
                 <img

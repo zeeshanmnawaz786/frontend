@@ -3,10 +3,10 @@ import React from "react";
 const BelowCards = () => {
   return (
     <div>
-      <div className="flex lg:flex-row flex-col gap-0 text-gray-300">
+      <div className="flex lg:flex-row flex-col text-gray-300">
         {/* Left Card Start */}
         <div
-          className="order-2 md:order-1 mb-10 p-5 shadow-custom rounded-lg relative"
+          className="order-2 md:order-1 mb-10 p-4 shadow-custom rounded-lg relative"
           style={{ backgroundColor: "rgba(59,51,100,255)" }}
         >
           <h2 className="text-xl font-semibold mb-3 text-amber-300">
@@ -49,48 +49,11 @@ const BelowCards = () => {
               0.00795 BNB
             </span>
           </div>
-          <div className="flex justify-between">
-            <p className="mb-1 font-light text-xs">
-              Percentage That The First Seconds Wins:
-            </p>
-            <span className="text-sm font-bold text-[#d753d2]">10%</span>
-          </div>
-          <div className="flex justify-between">
-            <p className="mb-1 font-light text-xs">Amount To Be Won:</p>
-            <span className="text-sm font-bold text-[#81d2e5]">
-              4.000000300 BNB
-            </span>
-          </div>
-          &nbsp;
-          <div className="flex justify-between">
-            <p className="mb-1 font-light text-xs">
-              Tickets Needed To Be THIRD PLACE:
-            </p>
-            <span className="text-sm font-bold text-[#d753d2]">1 Ticket</span>
-          </div>
-          <div className="flex justify-between">
-            <p className="mb-1 font-light text-xs">Cost Of Tickets:</p>
-            <span className="text-sm font-bold text-[#81d2e5]">
-              0.00795 BNB
-            </span>
-          </div>
-          <div className="flex justify-between">
-            <p className="mb-1 font-light text-xs">
-              Percentage That The Third Place Wins:
-            </p>
-            <span className="text-sm font-bold text-[#d753d2]">5%</span>
-          </div>
-          <div className="flex justify-between">
-            <p className="mb-1 font-light text-xs">Amount To Be Won:</p>
-            <span className="text-sm font-bold text-[#81d2e5]">
-              2.000000150 BNB
-            </span>
-          </div>
         </div>
         {/* Left Card End */}
 
         {/* Middle Card Start */}
-        <div className="order-1 md:order-2 lg:p-8 col-span-2 mb-4 relative text-white">
+        <div className="order-1 md:order-2 lg:p-8 col-span-2 mb-4 m-0 relative text-white">
           <div className="border rounded-lg border-[#d753d2] text-center pt-1 pb-1">
             <p className="text-xs font-bold">
               Last Buyer: <span className="text-green-500">0x0000...0000</span>
@@ -108,50 +71,6 @@ const BelowCards = () => {
             </p>
           </div>
 
-          <div className="border rounded-lg border-[#d753d2] text-center pt-1 pb-1 m-2 mt-4">
-            <div className="font-bold text-xl flex items-center justify-center gap-2">
-              <div className="w-6 h-6 transform rotate-90 lg:mr-20">
-                &#10094;
-              </div>
-              <div className="col-span-1">
-                <span className="mr-4 ml-4">1</span>
-                <span className="text-sm text-gray-400 font-semibold lg:mr-24 mr-4">
-                  Ticket
-                </span>
-              </div>
-              <div className="w-6 h-6 transform rotate-90 ">&#10095;</div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-4 gap-8 mt-3 text-center m-2">
-            <div className="border rounded-2xl border-[#d753d2] text-center text-xs">
-              500
-            </div>
-            <div className="border rounded-2xl border-[#d753d2] text-center text-xs">
-              200
-            </div>
-            <div className="border rounded-2xl border-[#d753d2] text-center text-xs">
-              100
-            </div>
-            <div className="border rounded-2xl border-[#d753d2] text-center text-xs">
-              50
-            </div>
-          </div>
-          <div className="grid grid-cols-4 gap-8 mt-3 text-center m-2">
-            <div className="border rounded-2xl border-[#d753d2] text-center text-xs">
-              20
-            </div>
-            <div className="border rounded-2xl border-[#d753d2] text-center text-xs">
-              10
-            </div>
-            <div className="border rounded-2xl border-[#d753d2] text-center text-xs">
-              5
-            </div>
-            <div className="border rounded-2xl border-[#d753d2] text-center text-xs">
-              1
-            </div>
-          </div>
-
           <div className="m-2 rounded-2xl mt-6 mb-6 pt-1 pb-1 bg-[#6ed9e1] text-[#2b2549] text-center font-extrabold">
             BUY (0.00795 BNB)
           </div>
@@ -165,7 +84,7 @@ const BelowCards = () => {
 
         {/* Right Card Start */}
         <div
-          className="order-3 p-4 shadow-custom rounded-lg relative"
+          className="order-3 p-4 lg:w-[300px] h-80 shadow-custom rounded-lg relative"
           style={{ backgroundColor: "rgba(59,51,100,255)" }}
         >
           <h2 className="text-xl font-semibold mb-3 text-amber-300">

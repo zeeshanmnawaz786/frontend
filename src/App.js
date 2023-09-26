@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="min-h-screen flex" style={{ backgroundColor: "#2a2649" }}>
       <LeftLine />
-      <div className="w-screen p-8">
+      <div className="w-[96vw] p-8">
         <TopCards />
         <BelowCards />
       </div>
